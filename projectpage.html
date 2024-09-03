@@ -6,30 +6,71 @@
     <title>Rain Detector from Photographs</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
         }
         header {
-            background-color: #333;
+            background-color: #0056b3;
             color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background-color: #004494;
             padding: 10px 0;
             text-align: center;
         }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
         section {
-            margin: 20px 0;
-            padding: 10px;
+            margin: 20px auto;
+            padding: 20px;
             background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
         }
-        h1, h2 {
-            color: #333;
+        section h2 {
+            color: #0056b3;
+            font-size: 1.8em;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
-        p {
-            margin-bottom: 10px;
+        p, ul {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f0f2f5;
+            color: #555;
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
@@ -39,39 +80,90 @@
     <h1>Rain Detector from Photographs</h1>
 </header>
 
-<section>
+<nav>
+    <a href="#overview">Overview</a>
+    <a href="#utility">Utility</a>
+    <a href="#technical">Technical Approach</a>
+    <a href="#dataset">Dataset</a>
+    <a href="#results">Results</a>
+    <a href="#conclusion">Conclusion</a>
+</nav>
+
+<section id="overview">
     <h2>Project Overview</h2>
     <p>
-        This project aims to develop a rain detector using computer vision techniques in Python. The model is designed to analyze photographs and identify whether rain is present. By leveraging machine learning algorithms, the rain detector can classify images as either showing rain or no rain, based on visual features extracted from the photographs.
+        This project focuses on creating a machine learning model to detect rain in photographs using computer vision techniques in Python. The primary goal is to develop a robust classifier capable of identifying rainy conditions in images by analyzing visual patterns and features. This system can be applied in various real-world scenarios to improve automation and decision-making processes.
     </p>
 </section>
 
-<section>
+<section id="utility">
     <h2>Utility of a Rain Detector</h2>
     <p>
-        Detecting rain in photographs has various practical applications across different industries. Here are a few examples:
+        A rain detector has broad applications across different domains, including:
     </p>
     <ul>
-        <li><strong>Weather Monitoring:</strong> Automatic rain detection from cameras can enhance weather monitoring systems, providing real-time data to improve the accuracy of weather predictions and alerts.</li>
-        <li><strong>Traffic Management:</strong> Rainy conditions can significantly impact road safety. A rain detector integrated into traffic cameras can help manage traffic flow by identifying hazardous weather conditions, allowing authorities to take proactive measures.</li>
-        <li><strong>Surveillance Systems:</strong> In outdoor security systems, detecting rain can help adjust camera settings or trigger alerts, ensuring that the quality of surveillance footage remains high despite adverse weather.</li>
-        <li><strong>Photography Enhancement:</strong> For automated photo editing tools, knowing when a photo was taken in the rain can help in applying appropriate filters or adjustments to improve the image quality.</li>
+        <li><strong>Weather Monitoring:</strong> Enhances weather prediction systems by providing accurate, real-time data on rain presence in specific locations.</li>
+        <li><strong>Autonomous Vehicles:</strong> Improves safety by allowing self-driving cars to adjust their driving strategies in response to detected rain.</li>
+        <li><strong>Smart Agriculture:</strong> Assists in monitoring crop conditions and managing irrigation systems by detecting rain in agricultural fields.</li>
+        <li><strong>Environmental Research:</strong> Supports climate studies by providing data on precipitation patterns through remote sensing images.</li>
     </ul>
 </section>
 
-<section>
+<section id="technical">
     <h2>Technical Approach</h2>
     <p>
-        The rain detector uses a Convolutional Neural Network (CNN) trained on a labeled dataset of images with and without rain. The model processes the input photograph, extracting features such as patterns, textures, and brightness that are indicative of rainy conditions. These features are then analyzed to classify the image. The Python implementation leverages popular libraries like TensorFlow and OpenCV to handle the data processing, model training, and image analysis.
+        The rain detector leverages Convolutional Neural Networks (CNNs) due to their effectiveness in image recognition tasks. The model is trained on a labeled dataset containing images with and without rain. During training, the CNN learns to identify key features, such as streak patterns, reflections, and overall scene brightness, that distinguish rainy images from non-rainy ones.
+    </p>
+    <p>
+        Key technologies and libraries used in this project include:
+    </p>
+    <ul>
+        <li><strong>Python:</strong> The programming language used for model development and data processing.</li>
+        <li><strong>TensorFlow/Keras:</strong> Deep learning libraries utilized to build and train the CNN model.</li>
+        <li><strong>OpenCV:</strong> A computer vision library used for image processing and feature extraction.</li>
+        <li><strong>Matplotlib/Seaborn:</strong> Libraries used for visualizing data, model performance, and results.</li>
+    </ul>
+</section>
+
+<section id="dataset">
+    <h2>Dataset</h2>
+    <p>
+        The dataset used for training and testing the model comprises a balanced collection of images, carefully curated to include a variety of rainy and non-rainy scenes. Key aspects of the dataset include:
+    </p>
+    <ul>
+        <li><strong>Source:</strong> Images sourced from open datasets and real-world photography collections.</li>
+        <li><strong>Preprocessing:</strong> Each image undergoes resizing, normalization, and data augmentation to enhance model robustness.</li>
+        <li><strong>Labeling:</strong> Images are labeled as "Rain" or "No Rain" based on visual inspection and metadata.</li>
+    </ul>
+</section>
+
+<section id="results">
+    <h2>Results</h2>
+    <p>
+        After training, the model achieved an accuracy of X% on the test set, demonstrating its ability to effectively distinguish between rainy and non-rainy images. Precision, recall, and F1-score metrics were also evaluated to ensure the model's performance is reliable in various scenarios. Below is a summary of the results:
+    </p>
+    <ul>
+        <li><strong>Test Accuracy:</strong> X%</li>
+        <li><strong>Precision:</strong> Y%</li>
+        <li><strong>Recall:</strong> Z%</li>
+        <li><strong>F1-Score:</strong> W%</li>
+    </ul>
+</section>
+
+<section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>
+        The rain detector project illustrates the potential of computer vision in addressing practical challenges. By accurately detecting rain in photographs, the model offers valuable applications in weather monitoring, autonomous systems, agriculture, and beyond. Future work may involve refining the model to improve its accuracy or adapting it for real-time rain detection in video streams.
+    </p>
+    <p>
+        This project not only showcases the integration of machine learning with image processing but also opens up avenues for further exploration in automated environmental sensing.
     </p>
 </section>
 
-<section>
-    <h2>Conclusion</h2>
-    <p>
-        This rain detector project demonstrates the power of computer vision in solving practical problems. By accurately detecting rain in photographs, the model can contribute to improving safety, monitoring, and image processing across various fields. This project serves as a foundation for further research and development in automated weather detection and image analysis.
-    </p>
-</section>
+<footer>
+    <p>Created by Ibrahim Luke Barhoumeh | &copy; 2024</p>
+</footer>
 
 </body>
 </html>
+
