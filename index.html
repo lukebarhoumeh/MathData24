@@ -1,195 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags for SEO and Responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ClearScan AI - Transforming X-ray Diagnostics with AI">
     <title>ClearScan AI - Revolutionizing Medical Diagnostics</title>
+    <meta name="description" content="ClearScan AI uses advanced AI to revolutionize X-ray diagnostics, providing faster and more accurate medical imaging solutions.">
+    <meta name="keywords" content="ClearScan AI, X-ray diagnostics, AI in healthcare, medical imaging, AI-powered diagnostics">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="ClearScan AI - Revolutionizing Medical Diagnostics">
+    <meta property="og:description" content="Faster, smarter, and more accurate medical imaging with AI-powered X-ray diagnostics.">
+    <meta property="og:image" content="path/to/your/social-media-image.jpg">
+    <meta property="og:url" content="https://www.clearscanai.com">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Inline CSS -->
     <style>
+        /* Resetting CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        /* Global Styles */
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f9;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f9;
             color: #333;
+            line-height: 1.6;
         }
-        header {
-            background-color: #1c4e80;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        header h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        header p {
-            font-size: 20px;
-            font-weight: 300;
-        }
+
+        /* Navigation Bar */
         nav {
-            background: #fff;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 999;
         }
-        nav a {
-            margin: 0 15px;
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .logo a {
             text-decoration: none;
-            color: #1c4e80;
-            font-weight: 600;
+            color: #005aa7;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        nav .nav-links li {
+            margin-left: 20px;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: #005aa7;
             font-size: 18px;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
-        nav a:hover {
-            color: #f78154;
+
+        nav .nav-links a:hover {
+            color: #00f260;
         }
+
+        /* Responsive Menu Toggle */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle i {
+            font-size: 24px;
+            color: #005aa7;
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(to bottom right, #1c4e80, #f78154);
+            background: url('hero-image.jpg') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
             color: white;
-            padding: 80px 20px;
             text-align: center;
         }
-        .hero h1 {
-            font-size: 56px;
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 50px;
             margin-bottom: 20px;
         }
-        .hero p {
-            font-size: 24px;
+
+        .hero-content p {
+            font-size: 22px;
             margin-bottom: 30px;
         }
+
         .cta {
-            background-color: #f78154;
-            color: white;
             padding: 15px 30px;
+            background-color: #00f260;
+            color: #fff;
             text-decoration: none;
-            border-radius: 30px;
             font-size: 18px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
         }
+
         .cta:hover {
-            background-color: #ff5c33;
+            background-color: #00c48f;
         }
+
+        /* Section Styles */
         section {
-            padding: 60px 20px;
+            padding: 60px 0;
             text-align: center;
-            background-color: white;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
+
         section h2 {
             font-size: 36px;
             margin-bottom: 20px;
-            color: #1c4e80;
+            color: #005aa7;
         }
+
         section p {
             font-size: 18px;
-            color: #666;
-            line-height: 1.7;
             margin-bottom: 20px;
+            color: #555;
         }
-        section:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        footer {
-            background-color: #1c4e80;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        footer p {
-            margin-bottom: 10px;
-        }
-        footer a {
-            color: #f78154;
-            text-decoration: none;
-        }
-        footer a:hover {
-            color: white;
-        }
-        .grid-2 {
+
+        /* About Section */
+        #about .grid-2 {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+            text-align: left;
         }
-        .grid-2 img {
-            max-width: 100%;
+
+        #about .text {
+            order: 2;
+        }
+
+        #about .image {
+            order: 1;
+        }
+
+        #about img {
+            width: 100%;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        @media(max-width: 768px) {
-            .grid-2 {
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            color: #00f260;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #005aa7;
+        }
+
+        .feature-card p {
+            color: #555;
+        }
+
+        /* Contact Section */
+        #contact p {
+            margin-bottom: 10px;
+        }
+
+        #contact a {
+            color: #005aa7;
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            color: #00f260;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #005aa7;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #00f260;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #fff;
+                width: 100%;
+                text-align: right;
+                padding: 20px;
+            }
+
+            nav .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            #about .grid-2 {
                 grid-template-columns: 1fr;
             }
-            .hero h1 {
-                font-size: 40px;
-            }
-            .hero p {
-                font-size: 20px;
+
+            #about .text,
+            #about .image {
+                order: unset;
             }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>ClearScan AI</h1>
-        <p>Transforming X-ray Diagnostics with AI</p>
-    </header>
-
+    <!-- Navigation Bar -->
     <nav>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#market">Market Opportunity</a>
-        <a href="#contact">Contact</a>
+        <div class="container">
+            <div class="logo">
+                <a href="#home">ClearScan AI</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#market">Market Opportunity</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <!-- Responsive Menu Icon -->
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
     </nav>
 
-    <div class="hero">
-        <h1>Faster, More Accurate X-ray Analysis</h1>
-        <p>Harness the power of AI to assist healthcare professionals in diagnosing X-rays.</p>
-        <a href="#features" class="cta">Learn More</a>
-    </div>
-
-    <section id="about">
-        <h2>About ClearScan AI</h2>
-        <div class="grid-2">
-            <img src="xray-sample.jpg" alt="X-ray analysis image">
-            <p>ClearScan AI uses advanced AI and computer vision to improve how X-rays are analyzed. Our goal is to help healthcare professionals quickly and accurately detect issues in X-rays, such as fractures or abnormalities, using AI models like AlexNet. By integrating deep learning into medical diagnostics, we reduce human error and speed up the diagnosis process.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home" role="banner">
+        <div class="hero-content">
+            <h1>AI-Powered X-ray Diagnostics</h1>
+            <p>Faster, smarter, and more accurate medical imaging</p>
+            <a href="#features" class="cta">Explore More</a>
         </div>
     </section>
 
-    <section id="features">
-        <h2>Key Features</h2>
-        <p>- AI-powered classification of X-rays</p>
-        <p>- Real-time detection of fractures and abnormalities</p>
-        <p>- Reduced human error and faster diagnostics</p>
+    <!-- About Section -->
+    <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">About ClearScan AI</h2>
+        <div class="grid-2 container">
+            <div class="text">
+                <p>ClearScan AI uses advanced deep learning models to enhance X-ray diagnostics. By harnessing the power of computer vision and AI, we help healthcare professionals quickly detect fractures, abnormalities, and other issues in medical images. Our goal is to improve patient care by reducing human error and speeding up the diagnostic process.</p>
+            </div>
+            <div class="image">
+                <!-- Replace with your actual image -->
+                <img src="flowchart-image.png" alt="X-ray diagnostic flowchart">
+            </div>
+        </div>
     </section>
 
-    <section id="market">
-        <h2>Market Opportunity</h2>
-        <p>ClearScan AI addresses the $28 billion global medical imaging market by providing faster, more accurate AI-driven X-ray analysis.</p>
-        <p>We aim to revolutionize the medical diagnostics industry by reducing human error and improving efficiency through advanced technology.</p>
+    <!-- Features Section -->
+    <section id="features" class="features" aria-labelledby="features-heading">
+        <h2 id="features-heading">Key Features</h2>
+        <div class="features-grid container">
+            <div class="feature-card">
+                <i class="fas fa-brain fa-3x"></i>
+                <h3>AI-Powered Classification</h3>
+                <p>Real-time classification of X-rays into "good" or "bad", helping doctors prioritize care.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-check-circle fa-3x"></i>
+                <h3>Accurate Diagnosis</h3>
+                <p>Our AI models detect fractures, tumors, and other abnormalities with high accuracy.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-cloud fa-3x"></i>
+                <h3>Cloud-Based Accessibility</h3>
+                <p>Access X-ray analysis from anywhere with our secure, cloud-based platform.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>If you're interested in improving your medical diagnostics workflow with AI, get in touch!</p>
-        <p>Email: <a href="mailto:lukebarhoumeh11@gmail.com">lukebarhoumeh11@gmail.com</a></p>
-        <p>Phone: (224) 343-4320</p>
+    <!-- Market Opportunity Section -->
+    <section id="market" aria-labelledby="market-heading">
+        <h2 id="market-heading">Market Opportunity</h2>
+        <div class="container">
+            <p>With a $28 billion global market for medical imaging, ClearScan AI addresses the need for faster, more accurate diagnostics. We’re positioned to revolutionize the healthcare industry by reducing the burden on medical professionals and improving patient outcomes through AI.</p>
+        </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact Us</h2>
+        <div class="container">
+            <p>If you're interested in improving your medical diagnostics workflow with AI, reach out to us!</p>
+            <p>Email: <a href="mailto:lukebarhoumeh11@gmail.com">lukebarhoumeh11@gmail.com</a></p>
+            <p>Phone: <a href="tel:+12243434320">(224) 343-4320</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 ClearScan AI. All rights reserved.</p>
-        <p>Email: <a href="mailto:lukebarhoumeh11@gmail.com">lukebarhoumeh11@gmail.com</a></p>
+        <div class="container">
+            <p>&copy; 2024 ClearScan AI. All rights reserved.</p>
+            <p>Visit us: <a href="https://www.clearscanai.com">www.clearscanai.com</a></p>
+        </div>
     </footer>
 
+    <!-- External JavaScript for Responsive Menu -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
-
-
