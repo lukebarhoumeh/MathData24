@@ -11,7 +11,7 @@
     <!-- Open Graph Meta Tags for Social Media -->
     <meta property="og:title" content="ClearScan AI - Revolutionizing Medical Diagnostics">
     <meta property="og:description" content="Faster, smarter, and more accurate medical imaging with AI-powered X-ray diagnostics.">
-    <meta property="og:image" content="path/to/your/social-media-image.jpg">
+    <meta property="og:image" content="https://img.freepik.com/premium-photo/medical-xray-capturing-human_853677-31743.jpg">
     <meta property="og:url" content="https://www.clearscanai.com">
     <meta property="og:type" content="website">
 
@@ -39,6 +39,7 @@
             background-color: #f0f4f9;
             color: #333;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* Container */
@@ -50,12 +51,17 @@
 
         /* Navigation Bar */
         nav {
-            background-color: #fff;
+            background-color: transparent;
             padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 999;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         nav .container {
@@ -82,30 +88,23 @@
 
         nav .nav-links a {
             text-decoration: none;
-            color: #005aa7;
+            color: white;
             font-size: 18px;
             font-weight: 600;
             transition: color 0.3s ease;
+        }
+
+        nav.scrolled .nav-links a {
+            color: #005aa7;
         }
 
         nav .nav-links a:hover {
             color: #00f260;
         }
 
-        /* Responsive Menu Toggle */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-        }
-
-        .menu-toggle i {
-            font-size: 24px;
-            color: #005aa7;
-        }
-
         /* Hero Section */
         .hero {
-            background: url('hero-image.jpg') center/cover no-repeat;
+            background: url('https://img.freepik.com/premium-photo/medical-xray-capturing-human_853677-31743.jpg') center/cover no-repeat;
             height: 80vh;
             display: flex;
             justify-content: center;
@@ -128,6 +127,9 @@
         .hero-content {
             position: relative;
             z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.3s;
         }
 
         .hero-content h1 {
@@ -158,6 +160,9 @@
         section {
             padding: 60px 0;
             text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
         }
 
         section h2 {
@@ -179,14 +184,6 @@
             gap: 40px;
             align-items: center;
             text-align: left;
-        }
-
-        #about .text {
-            order: 2;
-        }
-
-        #about .image {
-            order: 1;
         }
 
         #about img {
@@ -229,20 +226,6 @@
 
         .feature-card p {
             color: #555;
-        }
-
-        /* Contact Section */
-        #contact p {
-            margin-bottom: 10px;
-        }
-
-        #contact a {
-            color: #005aa7;
-            text-decoration: none;
-        }
-
-        #contact a:hover {
-            color: #00f260;
         }
 
         /* Footer */
@@ -295,10 +278,13 @@
             #about .grid-2 {
                 grid-template-columns: 1fr;
             }
+        }
 
-            #about .text,
-            #about .image {
-                order: unset;
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -340,8 +326,8 @@
                 <p>ClearScan AI uses advanced deep learning models to enhance X-ray diagnostics. By harnessing the power of computer vision and AI, we help healthcare professionals quickly detect fractures, abnormalities, and other issues in medical images. Our goal is to improve patient care by reducing human error and speeding up the diagnostic process.</p>
             </div>
             <div class="image">
-                <!-- Replace with your actual image -->
-                <img src="flowchart-image.png" alt="X-ray diagnostic flowchart">
+                <!-- Flowchart Image Added Here -->
+                <img src="https://edrawcloudpublicus.s3.amazonaws.com/edrawimage/work/2023-1-30/1675067544/main.png" alt="X-ray diagnostic flowchart">
             </div>
         </div>
     </section>
@@ -402,6 +388,15 @@
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             menuToggle.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
