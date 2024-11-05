@@ -177,72 +177,41 @@
             color: #555;
         }
 
-        /* About Section */
-        #about .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            align-items: center;
-            text-align: left;
-        }
-
-        #about img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-card i {
-            color: #00f260;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #005aa7;
-        }
-
-        .feature-card p {
-            color: #555;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #005aa7;
-            color: white;
-            padding: 20px 0;
+        /* Upload Section */
+        #upload {
+            padding: 60px 0;
             text-align: center;
         }
 
-        footer a {
-            color: #00f260;
-            text-decoration: none;
+        .upload-form {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
         }
 
-        footer a:hover {
+        .upload-form input[type="file"] {
+            display: block;
+            margin: 10px auto;
+        }
+
+        .upload-form button {
+            padding: 10px 20px;
+            background-color: #00f260;
             color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upload-form button:hover {
+            background-color: #00c48f;
+        }
+
+        #prediction-result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #005aa7;
         }
 
         /* Media Queries */
@@ -318,57 +287,15 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" aria-labelledby="about-heading">
-        <h2 id="about-heading">About ClearScan AI</h2>
-        <div class="grid-2 container">
-            <div class="text">
-                <p>ClearScan AI uses advanced deep learning models to enhance X-ray diagnostics. By harnessing the power of computer vision and AI, we help healthcare professionals quickly detect fractures, abnormalities, and other issues in medical images. Our goal is to improve patient care by reducing human error and speeding up the diagnostic process.</p>
-            </div>
-            <div class="image">
-                <!-- Flowchart Image Added Here -->
-                <img src="https://edrawcloudpublicus.s3.amazonaws.com/edrawimage/work/2023-1-30/1675067544/main.png" alt="X-ray diagnostic flowchart">
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features" aria-labelledby="features-heading">
-        <h2 id="features-heading">Key Features</h2>
-        <div class="features-grid container">
-            <div class="feature-card">
-                <i class="fas fa-brain fa-3x"></i>
-                <h3>AI-Powered Classification</h3>
-                <p>Real-time classification of X-rays into "good" or "bad", helping doctors prioritize care.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-check-circle fa-3x"></i>
-                <h3>Accurate Diagnosis</h3>
-                <p>Our AI models detect fractures, tumors, and other abnormalities with high accuracy.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-cloud fa-3x"></i>
-                <h3>Cloud-Based Accessibility</h3>
-                <p>Access X-ray analysis from anywhere with our secure, cloud-based platform.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Market Opportunity Section -->
-    <section id="market" aria-labelledby="market-heading">
-        <h2 id="market-heading">Market Opportunity</h2>
-        <div class="container">
-            <p>With a $28 billion global market for medical imaging, ClearScan AI addresses the need for faster, more accurate diagnostics. We’re positioned to revolutionize the healthcare industry by reducing the burden on medical professionals and improving patient outcomes through AI.</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Contact Us</h2>
-        <div class="container">
-            <p>If you're interested in improving your medical diagnostics workflow with AI, reach out to us!</p>
-            <p>Email: <a href="mailto:lukebarhoumeh11@gmail.com">lukebarhoumeh11@gmail.com</a></p>
-            <p>Phone: <a href="tel:+12243434320">(224) 343-4320</a></p>
+    <!-- Upload Section -->
+    <section id="upload" aria-labelledby="upload-heading">
+        <h2 id="upload-heading">Upload an X-ray Image</h2>
+        <div class="upload-form">
+            <form id="xray-upload-form" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Predict</button>
+            </form>
+            <div id="prediction-result"></div>
         </div>
     </section>
 
@@ -380,7 +307,7 @@
         </div>
     </footer>
 
-    <!-- External JavaScript for Responsive Menu -->
+    <!-- JavaScript for Upload Form -->
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
@@ -398,6 +325,29 @@
                 nav.classList.remove('scrolled');
             }
         });
+
+        // JavaScript for handling the form submission
+        document.getElementById("xray-upload-form").onsubmit = async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            try {
+                const response = await fetch("http://127.0.0.1:5000/", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    document.getElementById("prediction-result").innerText = "Prediction: " + result.result;
+                } else {
+                    document.getElementById("prediction-result").innerText = "Error: Unable to get prediction.";
+                }
+            } catch (error) {
+                document.getElementById("prediction-result").innerText = "Error: Unable to connect to the server.";
+                console.error("Error:", error);
+            }
+        };
     </script>
 </body>
 </html>
