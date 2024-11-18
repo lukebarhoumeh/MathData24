@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags for SEO and Responsiveness -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearScan AI - Revolutionizing Medical Diagnostics</title>
+    <meta name="description" content="ClearScan AI uses advanced AI to revolutionize X-ray diagnostics, providing faster and more accurate medical imaging solutions.">
+    <meta name="keywords" content="ClearScan AI, X-ray diagnostics, AI in healthcare, medical imaging, AI-powered diagnostics">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="ClearScan AI - Revolutionizing Medical Diagnostics">
+    <meta property="og:description" content="Faster, smarter, and more accurate medical imaging with AI-powered X-ray diagnostics.">
+    <meta property="og:image" content="https://img.freepik.com/premium-photo/medical-xray-capturing-human_853677-31743.jpg">
+    <meta property="og:url" content="https://www.clearscanai.com">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Inline CSS -->
+    <style>
+        /* Resetting CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f9;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #005aa7;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .logo a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        nav .nav-links li {
+            margin-left: 20px;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-links a:hover {
+            color: #00f260;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://img.freepik.com/premium-photo/medical-xray-capturing-human_853677-31743.jpg') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cta {
+            padding: 15px 30px;
+            background-color: #00f260;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta:hover {
+            background-color: #00c48f;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #005aa7;
+        }
+
+        section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Upload Section */
+        #upload {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .upload-form {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-form input[type="file"] {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            max-width: 400px;
+            cursor: pointer;
+        }
+
+        .upload-form button {
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #005aa7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .upload-form button:hover {
+            background-color: #004080;
+            transform: translateY(-3px);
+        }
+
+        #prediction-result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #005aa7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #005aa7;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #00f260;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #00c48f;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #fff;
+                width: 100%;
+                text-align: right;
+                padding: 20px;
+            }
+
+            nav .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <a href="#home">ClearScan AI</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#market">Market Opportunity</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <!-- Responsive Menu Icon -->
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" role="banner">
+        <div class="hero-content">
+            <h1>AI-Powered X-ray Diagnostics</h1>
+            <p>Faster, smarter, and more accurate medical imaging</p>
+            <a href="#features" class="cta">Explore More</a>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" aria-labelledby="upload-heading">
+        <h2 id="upload-heading">Upload an X-ray Image</h2>
+        <div class="upload-form">
+            <form id="xray-upload-form" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Predict</button>
+            </form>
+            <div id="prediction-result"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ClearScan AI. All rights reserved.</p>
+            <p>Visit us: <a href="https://www.clearscanai.com">www.clearscanai.com</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Upload Form -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // JavaScript for handling the form submission
+        document.getElementById("xray-upload-form").onsubmit = async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            try {
+                const response = await fetch("http://127.0.0.1:5000/", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    document.getElementById("prediction-result").innerText = "Prediction: " + result.result;
+                } else {
+                    document.getElementById("prediction-result").innerText = "Error: Unable to get prediction.";
+                }
+            } catch (error) {
+                document.getElementById("prediction-result").innerText = "Error: Unable to connect to the server.";
+                console.error("Error:", error);
+            }
+        };
+    </script>
+</body>
+</html>
